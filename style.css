@@ -1,0 +1,83 @@
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: "Segoe UI", sans-serif;
+ }
+
+ body {
+     background: radial-gradient(circle at top, #1a0000, #000);
+     color: #f5f5f5;
+     min-height: 100vh;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+ }
+
+ .container {
+     text-align: center;
+     padding: 40px;
+     background: rgba(20, 0, 0, 0.85);
+     border: 1px solid #3a0000;
+     border-radius: 20px;
+     box-shadow: 0 0 40px rgba(255, 0, 0, 0.2);
+     width: 90%;
+     max-width: 500px;
+ }
+
+ h1 {
+     color: #ff4d4d;
+     margin-bottom: 10px;
+ }
+
+ p {
+     color: #aaa;
+     margin-bottom: 30px;
+ }
+
+ .botoes {
+     display: flex;
+     flex-direction: column;
+     gap: 15px;
+ }
+
+ a {
+     text-decoration: none;
+ }
+
+ button {
+     width: 100%;
+     padding: 15px;
+     border: none;
+     border-radius: 12px;
+     font-size: 16px;
+     font-weight: bold;
+     cursor: pointer;
+     transition: 0.2s;
+ }
+
+ .adm {
+     background: #8b0000;
+     color: white;
+ }
+
+ .adm:hover {
+     background: #b30000;
+     transform: translateY(-2px);
+ }
+
+ .membros {
+     background: #222;
+     color: white;
+ }
+
+ .membros:hover {
+     background: #444;
+     transform: translateY(-2px);
+ }
+
+ footer {
+     margin-top: 30px;
+     font-size: 12px;
+     color: #777;
+ }

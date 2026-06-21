@@ -1,9 +1,9 @@
 const btnCalcular = document.getElementById("calcular");
 const btnLimpar = document.getElementById("limpar");
 const textarea = document.getElementById("relatorio");
-
 const pontuacaoEl = document.getElementById("pontuacao");
 const mensagemEl = document.getElementById("mensagem");
+const resultadoWhatsapp = document.getElementById("resultadoWhatsapp");
 
 // 🎯 CONFIG CENTRAL (fácil de manter e alterar)
 const CONFIG = {
@@ -35,6 +35,16 @@ function calcularObraExtra(texto) {
     if (/Não obrigatória→\s*🔖/i.test(texto)) pontos += 70;
 
     return pontos;
+}
+
+function extrairNome(textoMembro) {
+    const match = textoMembro.match(/💮\s*([^\n*]+)/);
+
+    if (match) {
+        return match[1].trim();
+    }
+
+    return "Membro sem nome";
 }
 
 // 📖 LEITURA (IGNORA PARÊNTESES E EMOJIS INVÁLIDOS)
@@ -115,20 +125,37 @@ btnCalcular.addEventListener("click", () => {
     const texto = textarea.value;
 
     if (!texto.trim()) {
-        mensagemEl.textContent = "Cole um relatório primeiro.";
+        mensagemEl.textContent =
+            "Cole um relatório primeiro.";
         return;
     }
 
-    const membros = texto.split("_______________{§}_______________");
+    const membros =
+        texto.split("_______________{§}_______________");
 
     let total = 0;
 
+    let relatorioWhatsapp =
+        "🌹 *Pontuação dos Membros*\n\n";
+
     membros.forEach((membro) => {
-        total += calcularMembro(membro);
+        const nome = extrairNome(membro);
+        const pontos = calcularMembro(membro);
+
+        total += pontos;
+
+        relatorioWhatsapp +=
+            `• ${nome} = ${pontos} \n`;
     });
 
+    relatorioWhatsapp +=
+        `\n🏆 Total Geral = ${total} `;
+
     pontuacaoEl.textContent = total;
-    mensagemEl.textContent = "Cálculo finalizado com sucesso.";
+    resultadoWhatsapp.value = relatorioWhatsapp;
+
+    mensagemEl.textContent =
+        "Cálculo finalizado com sucesso.";
 });
 
 // 🧹 LIMPAR

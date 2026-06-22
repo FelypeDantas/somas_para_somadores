@@ -1,3 +1,5 @@
+const resultadoWhatsapp = document.getElementById("resultadoWhatsapp");
+
 // 🎭 CONFIG CENTRAL
 const CONFIG = {
     EMOJIS: {

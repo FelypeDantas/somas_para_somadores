@@ -125,18 +125,16 @@ btnCalcular.addEventListener("click", () => {
     const texto = textarea.value;
 
     if (!texto.trim()) {
-        mensagemEl.textContent =
-            "Cole um relatório primeiro.";
+        mensagemEl.textContent = "Cole um relatório primeiro.";
         return;
     }
 
-    const membros =
-        texto.split("_______________{§}_______________");
+    const membros = texto.split("_______________{§}_______________");
 
     let total = 0;
 
-    let relatorioWhatsapp =
-        "🌹 *Pontuação dos Membros*\n\n";
+    // Armazena os resultados
+    const ranking = [];
 
     membros.forEach((membro) => {
         const nome = extrairNome(membro);
@@ -144,18 +142,41 @@ btnCalcular.addEventListener("click", () => {
 
         total += pontos;
 
-        relatorioWhatsapp +=
-            `• ${nome} = ${pontos} \n`;
+        ranking.push({
+            nome,
+            pontos
+        });
     });
 
-    relatorioWhatsapp +=
-        `\n🏆 Total Geral = ${total} `;
+    // Ordena da maior para a menor pontuação
+    ranking.sort((a, b) => b.pontos - a.pontos);
+
+    let relatorioWhatsapp = "🌹 *Pontuação dos Membros*\n\n";
+
+    ranking.forEach((membro, index) => {
+        let medalha = "";
+
+        switch (index) {
+            case 0:
+                medalha = "🥇 ";
+                break;
+            case 1:
+                medalha = "🥈 ";
+                break;
+            case 2:
+                medalha = "🥉 ";
+                break;
+        }
+
+        relatorioWhatsapp += `${medalha}• ${membro.nome} = ${membro.pontos}\n`;
+    });
+
+    relatorioWhatsapp += `\n🏆 *Total Geral* = ${total}`;
 
     pontuacaoEl.textContent = total;
     resultadoWhatsapp.value = relatorioWhatsapp;
 
-    mensagemEl.textContent =
-        "Cálculo finalizado com sucesso.";
+    mensagemEl.textContent = "Cálculo finalizado com sucesso.";
 });
 
 // 🧹 LIMPAR

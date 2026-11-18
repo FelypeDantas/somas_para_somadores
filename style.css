@@ -2,12 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
 /* ========================================
-   SANGUE CARMESIM | IDENTIDADE VISUAL
+   SANGUE CARMESIM | DESIGN SYSTEM
 ======================================== */
 
 :root {
     --background: #090609;
-    --surface: rgba(25, 12, 19, 0.92);
+    --surface: rgba(25, 12, 19, 0.94);
     --surface-hover: #29121d;
 
     --crimson: #9e2447;
@@ -26,9 +26,7 @@
         0 0 35px rgba(130, 15, 53, 0.10);
 }
 
-/* ========================================
-   RESET
-======================================== */
+/* RESET */
 
 * {
     margin: 0;
@@ -68,37 +66,31 @@ body {
     position: relative;
 }
 
-/* ========================================
-   TEXTURA AMBIENTAL
-======================================== */
+/* TEXTURA */
 
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-
     pointer-events: none;
 
-    background-image:
-        radial-gradient(
-            rgba(255, 255, 255, 0.035) 0.7px,
-            transparent 0.7px
-        );
+    background-image: radial-gradient(
+        rgba(255, 255, 255, 0.035) 0.7px,
+        transparent 0.7px
+    );
 
     background-size: 5px 5px;
     opacity: 0.18;
 }
 
-/* ========================================
-   CONTAINER PRINCIPAL
-======================================== */
+/* CONTAINER */
 
 .container {
     position: relative;
     z-index: 1;
 
     width: 90%;
-    max-width: 520px;
+    max-width: 560px;
 
     padding: 48px 42px;
 
@@ -117,14 +109,13 @@ body::before {
     animation: entrance 0.8s ease;
 }
 
-/* Detalhe superior */
-
 .container::before {
     content: "";
 
     position: absolute;
     top: 0;
     left: 15%;
+
     width: 70%;
     height: 1px;
 
@@ -138,42 +129,76 @@ body::before {
     opacity: 0.6;
 }
 
-/* ========================================
-   TÍTULO
-======================================== */
+/* CABEÇALHO */
+
+.cabecalho {
+    margin-bottom: 38px;
+}
+
+.simbolo {
+    font-size: 43px;
+    margin-bottom: 15px;
+
+    filter: drop-shadow(
+        0 0 15px rgba(163, 41, 77, 0.45)
+    );
+}
+
+.subtitulo {
+    display: block;
+
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 4px;
+
+    margin-bottom: 13px;
+}
 
 h1 {
     font-family: 'Cinzel', serif;
-
-    font-size: clamp(28px, 5vw, 38px);
+    font-size: clamp(30px, 5vw, 40px);
     font-weight: 600;
-
     letter-spacing: 2px;
+}
 
+h1 span {
     color: var(--rose);
-
-    margin-bottom: 14px;
-
-    text-shadow:
-        0 0 25px rgba(195, 76, 112, 0.20);
 }
 
-/* ========================================
-   DESCRIÇÃO
-======================================== */
+.divisor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-p {
+    gap: 15px;
+    margin: 22px 0;
+
+    color: var(--gold);
+}
+
+.divisor span {
+    width: 65px;
+    height: 1px;
+
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--gold)
+    );
+}
+
+.divisor span:last-child {
+    transform: rotate(180deg);
+}
+
+.cabecalho p {
     color: var(--text-muted);
-
     font-size: 13px;
-    line-height: 1.8;
-
-    margin-bottom: 32px;
+    line-height: 1.9;
 }
 
-/* ========================================
-   BOTÕES
-======================================== */
+/* LINKS E SISTEMAS */
 
 .botoes {
     display: flex;
@@ -181,30 +206,24 @@ p {
     gap: 16px;
 }
 
-a {
-    display: block;
-    text-decoration: none;
-}
-
-/* Estilo geral */
-
-button {
+.sistema {
     position: relative;
     overflow: hidden;
 
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
     width: 100%;
-    padding: 17px 20px;
+    padding: 22px;
 
-    border: 1px solid transparent;
-    border-radius: 11px;
+    text-align: left;
+    text-decoration: none;
+    color: var(--text);
 
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-
-    letter-spacing: 0.4px;
-
-    cursor: pointer;
+    background: #191017;
+    border: 1px solid var(--border);
+    border-radius: 13px;
 
     transition:
         transform 0.3s ease,
@@ -213,9 +232,9 @@ button {
         box-shadow 0.3s ease;
 }
 
-/* Reflexo ao passar o mouse */
+/* REFLEXO */
 
-button::before {
+.sistema::before {
     content: "";
 
     position: absolute;
@@ -228,102 +247,120 @@ button::before {
     background: linear-gradient(
         90deg,
         transparent,
-        rgba(255, 255, 255, 0.12),
+        rgba(255, 255, 255, 0.06),
         transparent
     );
 
     transform: skewX(-20deg);
-
     transition: left 0.6s ease;
 }
 
-button:hover::before {
+.sistema:hover::before {
     left: 150%;
 }
 
-button:hover {
-    transform: translateY(-3px);
+.sistema:hover {
+    transform: translateY(-4px);
+
+    background: var(--surface-hover);
+
+    border-color: rgba(223, 145, 173, 0.45);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-button:active {
-    transform: translateY(-1px);
+/* ÍCONES */
+
+.icone {
+    flex-shrink: 0;
+
+    width: 54px;
+    height: 54px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 24px;
+
+    background: rgba(163, 41, 77, 0.13);
+    border: 1px solid rgba(223, 145, 173, 0.15);
+    border-radius: 12px;
 }
 
-/* ========================================
-   BOTÃO ADMINISTRATIVO
-======================================== */
+/* INFORMAÇÕES */
+
+.informacoes {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 6px;
+}
+
+.categoria {
+    color: var(--gold);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.nome {
+    font-family: 'Cinzel', serif;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.descricao {
+    color: var(--text-muted);
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+/* SETA */
+
+.seta {
+    flex-shrink: 0;
+
+    color: var(--rose);
+    font-size: 23px;
+
+    transition: transform 0.3s ease;
+}
+
+.sistema:hover .seta {
+    transform: translate(4px, -4px);
+}
+
+/* VARIAÇÕES */
 
 .adm {
     background: linear-gradient(
-        135deg,
-        #76152f,
-        #a3294d
+        120deg,
+        rgba(118, 21, 47, 0.25),
+        rgba(25, 12, 19, 0.95)
     );
-
-    color: #fff;
-
-    border-color: rgba(223, 145, 173, 0.25);
-
-    box-shadow:
-        0 5px 20px rgba(139, 0, 45, 0.20);
 }
 
 .adm:hover {
-    background: linear-gradient(
-        135deg,
-        #982344,
-        #c13c63
-    );
-
-    box-shadow:
-        0 8px 28px rgba(163, 41, 77, 0.35);
-
-    border-color: var(--rose);
+    border-color: var(--crimson-light);
 }
-
-/* ========================================
-   BOTÃO DOS MEMBROS
-======================================== */
 
 .membros {
     background: linear-gradient(
-        135deg,
-        #211820,
-        #30232c
+        120deg,
+        rgba(66, 34, 51, 0.25),
+        rgba(25, 12, 19, 0.95)
     );
-
-    color: var(--text);
-
-    border-color: rgba(223, 145, 173, 0.13);
 }
 
-.membros:hover {
-    background: linear-gradient(
-        135deg,
-        #35202b,
-        #492536
-    );
-
-    border-color: rgba(223, 145, 173, 0.40);
-
-    box-shadow:
-        0 8px 25px rgba(0, 0, 0, 0.30);
-}
-
-/* ========================================
-   RODAPÉ
-======================================== */
+/* RODAPÉ */
 
 footer {
     position: relative;
 
     margin-top: 35px;
-    padding-top: 23px;
-
-    color: #81717a;
-
-    font-size: 11px;
-    letter-spacing: 0.3px;
+    padding-top: 25px;
 }
 
 footer::before {
@@ -344,9 +381,29 @@ footer::before {
     );
 }
 
-/* ========================================
-   ANIMAÇÕES
-======================================== */
+footer p {
+    color: var(--text-muted);
+    font-size: 11px;
+    margin-bottom: 12px;
+}
+
+footer strong {
+    color: var(--rose);
+}
+
+.assinatura {
+    color: var(--gold);
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.copyright {
+    margin-top: 27px;
+    color: #62545c;
+    font-size: 10px;
+}
+
+/* ANIMAÇÃO */
 
 @keyframes entrance {
     from {
@@ -360,9 +417,14 @@ footer::before {
     }
 }
 
-/* ========================================
-   RESPONSIVIDADE
-======================================== */
+/* ACESSIBILIDADE */
+
+.sistema:focus-visible {
+    outline: 2px solid var(--rose);
+    outline-offset: 5px;
+}
+
+/* RESPONSIVIDADE */
 
 @media (max-width: 600px) {
 
@@ -372,37 +434,38 @@ footer::before {
 
     .container {
         width: 100%;
-        padding: 38px 23px;
-        border-radius: 16px;
+        padding: 38px 22px;
     }
 
-    h1 {
-        font-size: 29px;
+    .cabecalho {
+        margin-bottom: 30px;
     }
 
-    p {
-        font-size: 12px;
+    .sistema {
+        padding: 17px 14px;
+        gap: 12px;
     }
 
-    button {
-        padding: 16px;
-        font-size: 13px;
+    .icone {
+        width: 46px;
+        height: 46px;
+        font-size: 21px;
     }
 
-    footer {
+    .nome {
+        font-size: 15px;
+    }
+
+    .descricao {
         font-size: 10px;
     }
+
+    .categoria {
+        font-size: 8px;
+    }
 }
 
-/* ========================================
-   ACESSIBILIDADE
-======================================== */
-
-button:focus-visible,
-a:focus-visible {
-    outline: 2px solid var(--rose);
-    outline-offset: 5px;
-}
+/* MOVIMENTO REDUZIDO */
 
 @media (prefers-reduced-motion: reduce) {
     *,

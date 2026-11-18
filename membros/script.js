@@ -68,12 +68,13 @@ function extrairCampoNumerico(nomeCampo, texto) {
     const campo = nomeCampo.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
     const regex = new RegExp(
-        "^\\s*" + campo + "\\s*:\\s*(\\d+)\\s*$",
-        "im"
+        "\\b" + campo + "\\s*:\\s*(\\d+)",
+        "i"
     );
 
     return extrairNumero(regex, texto);
 }
+
 
 // ======================================================
 // 👤 IDENTIFICAÇÃO DO MEMBRO

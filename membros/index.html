@@ -1,58 +1,174 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sangue Carmesim • Somador Membros</title>
+
+    <meta name="theme-color" content="#090609">
+    <meta name="description" content="Sistema de cálculo de pontuação dos membros do Sangue Carmesim.">
+
+    <title>Sangue Carmesim | Pontuação de Membros</title>
+
     <link rel="stylesheet" href="../ADM/style.css">
+    <link rel="stylesheet" href="membros.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="pagina-membros">
+
     <div class="container">
 
-        <header>
-            <h1>🌹 Sangue Carmesim</h1>
-            <p>Sistema de Cálculo • Membros</p>
+        <!-- CABEÇALHO -->
+
+        <header class="cabecalho">
+
+            <div class="marca">🌹</div>
+
+            <span class="identificador">SANGUE CARMESIM</span>
+
+            <h1>Sistema de <span>Membros</span></h1>
+
+            <p class="descricao-principal">
+                Central de cálculo e acompanhamento de pontuação.
+            </p>
+
         </header>
 
-        <main>
+        <main class="conteudo">
 
-            <section class="input-area">
-                <label for="relatorio">📄 Cole o relatório:</label>
-                <textarea id="relatorio" placeholder="Cole aqui o relatório completo..."></textarea>
+            <!-- ENTRADA DO RELATÓRIO -->
+
+            <section class="painel painel-relatorio">
+
+                <div class="titulo-secao">
+                    <div>
+                        <span class="etiqueta">ENTRADA DE DADOS</span>
+                        <h2>Relatório de atividades</h2>
+                    </div>
+
+                    <span class="icone-secao">📄</span>
+                </div>
+
+                <label for="relatorio">
+                    Cole abaixo o relatório do membro:
+                </label>
+
+                <textarea
+                    id="relatorio"
+                    placeholder="Cole aqui o relatório completo..."
+                    spellcheck="false"
+                ></textarea>
+
+                <span class="dica">
+                    Confira se o relatório está completo antes de calcular.
+                </span>
+
             </section>
 
-            <section class="actions">
-                <button id="calcular">Calcular Pontuação</button>
-                <button id="limpar" class="secondary">Limpar</button>
+            <!-- AÇÕES -->
+
+            <section class="acoes">
+
+                <button id="calcular" class="botao-calcular" type="button">
+                    <span>✦</span>
+                    Calcular pontuação
+                </button>
+
+                <button id="limpar" class="botao-limpar" type="button">
+                    Limpar relatório
+                </button>
+
             </section>
 
-            <section class="resultado">
-                <h2>Resultado</h2>
-                <div id="pontuacao">0</div>
-                <p id="mensagem">Aguardando cálculo...</p>
+            <!-- RESULTADO -->
+
+            <section class="painel painel-resultado" aria-live="polite">
+
+                <div class="titulo-secao">
+                    <div>
+                        <span class="etiqueta">DESEMPENHO</span>
+                        <h2>Resultado do cálculo</h2>
+                    </div>
+
+                    <span class="icone-secao">🏆</span>
+                </div>
+
+                <div class="pontuacao-area">
+
+                    <span class="pontuacao-legenda">
+                        PONTUAÇÃO TOTAL
+                    </span>
+
+                    <div id="pontuacao">0</div>
+
+                    <span class="pontuacao-unidade">
+                        pontos
+                    </span>
+
+                </div>
+
+                <p id="mensagem">
+                    Aguardando cálculo...
+                </p>
+
             </section>
 
-            <section class="resultado-whatsapp">
-                    <h2>📱 WhatsApp</h2>
-                
-                    <textarea
-                        id="resultadoWhatsapp"
-                        readonly
-                        style="height:250px"
-                    ></textarea>
-                </section>
+            <!-- RESULTADO WHATSAPP -->
+
+            <section class="painel painel-whatsapp">
+
+                <div class="titulo-secao">
+                    <div>
+                        <span class="etiqueta">COMPARTILHAMENTO</span>
+                        <h2>Resultado para WhatsApp</h2>
+                    </div>
+
+                    <span class="icone-secao">📱</span>
+                </div>
+
+                <p class="descricao-painel">
+                    Resultado formatado para facilitar o compartilhamento.
+                </p>
+
+                <textarea
+                    id="resultadoWhatsapp"
+                    class="saida-whatsapp"
+                    readonly
+                    aria-label="Resultado formatado para WhatsApp"
+                    placeholder="O resultado formatado aparecerá aqui..."
+                ></textarea>
+
+            </section>
 
         </main>
 
-        <footer>
-            <p>Dark Roses renasceu como Sangue Carmesim 🌫️🌹</p>
+        <!-- RODAPÉ -->
+
+        <footer class="rodape">
+
+            <div class="linha-decorativa"></div>
+
+            <p>
+                Dark Roses renasceu como
+                <strong>Sangue Carmesim</strong>.
+            </p>
+
+            <span>
+                UMA NOVA IDENTIDADE. O MESMO PROPÓSITO.
+            </span>
+
+            <small>© 2026 Sangue Carmesim</small>
+
         </footer>
 
     </div>
 
     <script src="script.js"></script>
-</body>
 
+</body>
 </html>
